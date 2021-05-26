@@ -3,13 +3,26 @@ h=figure('Position',[1     21   1366    670], ...
 'Name','Mapas en Colormap');
 fs=20;
 
-matrizC=[jet cubehelix hsv rainbow hot cool ...
+matrizCa=[jet cubehelix hsv rainbow hot cool ...
          spring summer autumn winter gray ...
          bone copper pink ocean colorcube ...  
          flag lines prism];
+matrizC=[];
+for i=1:size(matrizCa,2)
+  unico=true;
+  for j=i+1:size(matrizCa,2)
+    if isequal(matrizCa(:,i),matrizCa(:,j)) 
+      unico=false;
+      break;
+    endif
+  endfor
+  if unico
+  matrizC=[matrizC matrizCa(:,i)];
+  endif  
+endfor
 ###############################################################         
 ## Show the colormap profile and as an image
-ai=[randi([1 57]) randi([1 57]) randi([1 57])];
+ai=[randi([1 size(matrizC,2)]) randi([1 size(matrizC,2)]) randi([1 size(matrizC,2)])];
 cmap=[matrizC(:,ai(1))  matrizC(:,ai(2)) matrizC(:,ai(3))];
 subplot(4, 4, 1);
 ml=size(cmap,1)-1;
@@ -29,7 +42,7 @@ ylabel("Value",'fontsize',fs,'fontweight','bold')
 xlabel("color index",'fontsize',fs,'fontweight','bold')
 ###############################################################         
 ## Show the colormap profile and as an image
-ai=[randi([1 57]) randi([1 57]) randi([1 57])];
+ai=[randi([1 size(matrizC,2)]) randi([1 size(matrizC,2)]) randi([1 size(matrizC,2)])];
 cmap=[matrizC(:,ai(1))  matrizC(:,ai(2)) matrizC(:,ai(3))];
 subplot(4, 4, 2);
 ml=size(cmap,1)-1;
@@ -49,7 +62,7 @@ ylabel("Value",'fontsize',fs,'fontweight','bold')
 xlabel("color index",'fontsize',fs,'fontweight','bold')
 ###############################################################         
 ## Show the colormap profile and as an image
-ai=[randi([1 57]) randi([1 57]) randi([1 57])];
+ai=[randi([1 size(matrizC,2)]) randi([1 size(matrizC,2)]) randi([1 size(matrizC,2)])];
 cmap=[matrizC(:,ai(1))  matrizC(:,ai(2)) matrizC(:,ai(3))];
 subplot(4, 4, 3);
 ml=size(cmap,1)-1;
@@ -69,7 +82,7 @@ ylabel("Value",'fontsize',fs,'fontweight','bold')
 xlabel("color index",'fontsize',fs,'fontweight','bold')     
 ###############################################################         
 ## Show the colormap profile and as an image
-ai=[randi([1 57]) randi([1 57]) randi([1 57])];
+ai=[randi([1 size(matrizC,2)]) randi([1 size(matrizC,2)]) randi([1 size(matrizC,2)])];
 cmap=[matrizC(:,ai(1))  matrizC(:,ai(2)) matrizC(:,ai(3))];
 subplot(4, 4, 4);
 ml=size(cmap,1)-1;
@@ -90,7 +103,7 @@ xlabel("color index",'fontsize',fs,'fontweight','bold')
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 ###############################################################         
 ## Show the colormap profile and as an image
-ai=[randi([1 57]) randi([1 57]) randi([1 57])];
+ai=[randi([1 size(matrizC,2)]) randi([1 size(matrizC,2)]) randi([1 size(matrizC,2)])];
 cmap=[matrizC(:,ai(1))  matrizC(:,ai(2)) matrizC(:,ai(3))];
 subplot(4, 4, 9);
 ml=size(cmap,1)-1;
@@ -110,7 +123,7 @@ ylabel("Value",'fontsize',fs,'fontweight','bold')
 xlabel("color index",'fontsize',fs,'fontweight','bold')
 ###############################################################         
 ## Show the colormap profile and as an image
-ai=[randi([1 57]) randi([1 57]) randi([1 57])];
+ai=[randi([1 size(matrizC,2)]) randi([1 size(matrizC,2)]) randi([1 size(matrizC,2)])];
 cmap=[matrizC(:,ai(1))  matrizC(:,ai(2)) matrizC(:,ai(3))];
 subplot(4, 4, 10);
 ml=size(cmap,1)-1;
@@ -130,7 +143,7 @@ ylabel("Value",'fontsize',fs,'fontweight','bold')
 xlabel("color index",'fontsize',fs,'fontweight','bold')
 ###############################################################         
 ## Show the colormap profile and as an image
-ai=[randi([1 57]) randi([1 57]) randi([1 57])];
+ai=[randi([1 size(matrizC,2)]) randi([1 size(matrizC,2)]) randi([1 size(matrizC,2)])];
 cmap=[matrizC(:,ai(1))  matrizC(:,ai(2)) matrizC(:,ai(3))];
 subplot(4, 4, 11);
 ml=size(cmap,1)-1;
@@ -150,7 +163,7 @@ ylabel("Value",'fontsize',fs,'fontweight','bold')
 xlabel("color index",'fontsize',fs,'fontweight','bold')     
 ###############################################################         
 ## Show the colormap profile and as an image
-ai=[randi([1 57]) randi([1 57]) randi([1 57])];
+ai=[randi([1 size(matrizC,2)]) randi([1 size(matrizC,2)]) randi([1 size(matrizC,2)])];
 cmap=[matrizC(:,ai(1))  matrizC(:,ai(2)) matrizC(:,ai(3))];
 subplot(4, 4, 12);
 ml=size(cmap,1)-1;
