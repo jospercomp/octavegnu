@@ -62,7 +62,7 @@ s = struct("field1", {1, "one"}, "field2", {2, "two"},"field3", 3);
 s.field1
 s.field2
 s.field3
-struct ("field1", {{1, "one"}}, "field2", 2)
+struct("field1", {{1, "one"}}, "field2", 2)
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 s = struct("d", 4, "b", 2, "a", 1, "c", 3);
 t1 = orderfields(s)
@@ -80,6 +80,12 @@ c(2,1,:)(:)
 %s.Height = 185;
 %s.Age = 42;
 #c = namedargs2cell(s)
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+idx = substruct ("()", {3, ":"})
+x = [1, 2, 3;
+     4, 5, 6;
+     7, 8, 9];
+subsref(x, idx)
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 c = {"a string", rand(2, 2)};
 c{1}
@@ -160,6 +166,9 @@ out = struct("call1", cell (2, 1), "call2", cell (2, 1));
 [out.call1] = find(in.call1);
 [out.call2] = find(in.call2);
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
+C = {[1], [2 3 4]; [5; 9], [6 7 8; 10 11 12]};
+cell2mat(C)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
 for i = {1,"two";"three",4}
  i
 endfor
@@ -191,9 +200,18 @@ endfunction
 cellfun("atan2", {1, 0}, {0, 1})
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 function [a, b] = twoouts(x)
-  a = x;b = x*x;
+  a = x;
+  b = x*x;
 endfunction
 [aa, bb] = cellfun(@twoouts,{1, 2, 3})
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+function y = f (x)
+  y.re = real (x);
+  y.im = imag (x);
+endfunction
+f(rand(2) + rand(2) * I)
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%[ x.u, x.s(2:3,2:3), x.v ] = svd([1, 2; 3, 4]);
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 cellfun("tolower", {"Foo", "Bar", "FooBar"},"UniformOutput", false)
 %%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -211,6 +229,7 @@ figure
 text (0.5, 0.8, {"Line 1", "Line 2"})
 text ([0.4, 0.4], [0.8, 0.6], {"Point 1 Text", "Point 2 text"})
 text ([0.6, 0.6], [0.8, 0.6], {{"Point 1 Line 1", "Point 1 Line 2"},"Point 2 text"})
+%%%%%%%%%%%%%%%%%%%%%%%%%%
 gtext({"I clicked here"; "and there"})
 gtext({"I clicked", "here"; "and", "there"})
 %%%%%%%%%%%%%%%%%%%%%%%%%%
